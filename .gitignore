@@ -1,0 +1,45 @@
+# Alat bantu pribadi (bukan bagian tugas)
+.agents/
+.claude/
+CLAUDE.md
+agent_space/
+
+# Dokumen dan bahan proposal (dibagikan di luar repo)
+/tugas-anggota/
+/docs/
+/assets/
+
+# Python
+.venv/
+__pycache__/
+
+# Java, Maven, NetBeans
+target/
+build/
+dist/
+*.class
+*.jar
+!**/lib/*.jar
+nbproject/private/
+nb-configuration.xml
+nbactions.xml
+
+# IDE lain
+.idea/
+*.iml
+.vscode/
+
+# PHP
+vendor/
+.env
+
+# File sementara Word/Office (muncul saat dokumen sedang dibuka)
+~$*
+
+# Sistem operasi
+Thumbs.db
+desktop.ini
+.DS_Store
+
+# Log
+*.log
