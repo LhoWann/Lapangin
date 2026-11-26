@@ -1,25 +1,3 @@
 # Tugas Besar PBO - Lapangin
 
 Aplikasi desktop booking lapangan futsal, badminton, dan basket. Frontend Java Swing + FlatLaf, backend PHP (REST API), database MySQL.
-
-## Isi folder
-
-```
-tubesPBO/
-|-- README.md                 ringkasan ini
-|-- tugas-anggota/            pembagian tugas, mulai dari README.md di dalamnya
-|-- docs/
-|   |-- PRD.md                rancangan lengkap (fitur, aturan, kode contoh, API, database)
-|   |-- proposal/             Proposal_Lapangin.docx (proposal resmi untuk dikumpulkan)
-|   |-- diagram/              gambar diagram UML, ERD, dan mockup (bisa dipakai di PPT)
-|   `-- ketentuan/            deskripsi tugas dan ketentuan proposal dari dosen
-`-- assets/                   logo kampus
-```
-
-Folder `.agents/`, `.claude/`, dan `.venv/` adalah pengaturan alat bantu; tidak perlu diubah.
-
-## Mulai dari mana
-
-1. Buka `tugas-anggota/README.md` untuk melihat pembagian tugas.
-2. Buka file tugasmu sendiri di folder yang sama.
-3. Bahan rujukan: `docs/PRD.md` dan `docs/proposal/Proposal_Lapangin.docx`.
