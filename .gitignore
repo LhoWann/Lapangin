@@ -8,6 +8,7 @@ agent_space/
 /tugas-anggota/
 /docs/
 /assets/
+/paket-tugas/
 
 # Python
 .venv/
