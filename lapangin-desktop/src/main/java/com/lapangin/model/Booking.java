@@ -82,34 +82,69 @@ public class Booking {
      * and the hours overlap. Adjacent bookings (18-20 and 20-22) do not clash.
      */
     public boolean bentrokDengan(Booking lain) {
-        // TODO Nisrina: tempat sama && lain tidak DIBATALKAN && jamMulai < lain.getJamSelesai() && lain.jamMulai < getJamSelesai()
-        throw new UnsupportedOperationException("Belum dibuat: Booking.bentrokDengan (Nisrina)");
-    }
+        if (lain == null) {
+            return false;
+        }
 
+        boolean tempatSama = this.lapangan.getId() == lain.lapangan.getId();
+
+        boolean tanggalSama = this.tanggal.equals(lain.tanggal);
+
+        boolean belumDibatalkan = lain.status != StatusBooking.DIBATALKAN;
+
+        boolean waktuBentrok =
+                this.jamMulai < lain.getJamSelesai()
+                && lain.jamMulai < this.getJamSelesai();
+
+        return tempatSama && tanggalSama && belumDibatalkan && waktuBentrok;
+    }
     /**
      * Pays this booking. Only allowed while MENUNGGU_BAYAR and when {@code metode.prosesBayar(total)} accepts it;
      * the new status comes from {@code metode.getStatusSetelahBayar()}.
      */
     public boolean bayar(Pembayaran metode) {
-        // TODO Nisrina: cek status, panggil metode.prosesBayar(total), simpan metode, ubah status
-        throw new UnsupportedOperationException("Belum dibuat: Booking.bayar (Nisrina)");
+        if (status != StatusBooking.MENUNGGU_BAYAR || metode == null) {
+            return false;
+        }
+
+        if (!metode.prosesBayar(total)) {
+            return false;
+        }
+
+        pembayaran = metode;
+        status = metode.getStatusSetelahBayar();
+
+        return true;
     }
 
     /** MENUNGGU_KONFIRMASI becomes LUNAS. */
     public boolean konfirmasi() {
-        // TODO Nisrina
-        throw new UnsupportedOperationException("Belum dibuat: Booking.konfirmasi (Nisrina)");
-    }
+        if (status != StatusBooking.MENUNGGU_KONFIRMASI) {
+            return false;
+        }
 
+        status = StatusBooking.LUNAS;
+        return true;
+    }
     /** MENUNGGU_KONFIRMASI goes back to MENUNGGU_BAYAR and the payment is cleared. */
     public boolean tolakPembayaran() {
-        // TODO Nisrina
-        throw new UnsupportedOperationException("Belum dibuat: Booking.tolakPembayaran (Nisrina)");
+        if (status != StatusBooking.MENUNGGU_KONFIRMASI) {
+            return false;
+        }
+
+        status = StatusBooking.MENUNGGU_BAYAR;
+        pembayaran = null;
+
+        return true;
     }
 
     /** MENUNGGU_BAYAR becomes DIBATALKAN; any other status is refused. */
     public boolean batalkan() {
-        // TODO Nisrina
-        throw new UnsupportedOperationException("Belum dibuat: Booking.batalkan (Nisrina)");
+        if (status != StatusBooking.MENUNGGU_BAYAR) {
+            return false;
+        }
+
+        status = StatusBooking.DIBATALKAN;
+        return true;
     }
 }
